@@ -48,7 +48,11 @@ public class Store {
 		}
 		return counter;
 	}
-
+	
+	public List<Item> getDisplayCabinet(){
+		return displayCabinet;
+		
+	}
 
 	public void showCabinet(){
 		System.out.println("----------------陳列棚状況-----------------------");
@@ -64,7 +68,9 @@ public class Store {
 		System.out.print("売上高累計:"+salesData.getSalesPrice()+"円 ");
 		System.out.print("廃棄数合計:"+salesData.getDisposalNumber()+"個 ");
 		System.out.print("廃棄金額累計:"+salesData.getDisposalPrice()+"円 ");
+		System.out.print("機会ロス:"+salesData.getChanceLoss()+"個 ");
 		System.out.println("在庫数:"+displayCabinet.size()+"個 ");
+		
 	}
 	
 

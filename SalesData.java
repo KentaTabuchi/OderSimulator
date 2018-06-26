@@ -13,7 +13,7 @@ public class SalesData {
 	private int salesPrice = 0;
 	private int disposalNumber = 0;
 	private int disposalPrice = 0;
-
+	private int chanceLoss = 0; //チャンスロス
 	private SalesData() {
 	}
 	public static SalesData CreateInstance(){
@@ -22,11 +22,9 @@ public class SalesData {
 		}
 		return salesData;
 	}
-	public void addSales(Item item,int purchaseNumber){
-		for(int i=0;i<purchaseNumber;i++){
+	public void addSales(Item item){
 			this.salesNumber ++;
 			this.salesPrice += item.getPrice();
-		}
 	}
 	public void addDisposal(Item item){
 		this.disposalNumber ++;
@@ -43,6 +41,12 @@ public class SalesData {
 	}
 	public int getDisposalPrice(){
 		return disposalPrice;
+	}
+	public int getChanceLoss() {
+		return chanceLoss;
+	}
+	public void addChanceLoss(int chanceLoss) {
+		this.chanceLoss += chanceLoss;
 	}
 
 }

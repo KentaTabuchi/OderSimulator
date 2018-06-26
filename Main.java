@@ -26,6 +26,7 @@ public class Main {
 	Store store = Store.CreateStore();
 	Center center = Center.CreateInstance();
 	Oderer oderer = new Oderer();
+	Cashier cashier = new Cashier();
 	
 	Disposaler disposaler = new Disposaler();
 	Calendar cal = Calendar.getInstance();//現在時刻
@@ -38,14 +39,20 @@ public class Main {
 	gameLoopFlg=true;
 	try(Scanner scan = new Scanner(System.in)){
 		while(gameLoopFlg){
-			advanceTheDay(cal);
+			
 			System.out.println("どうしますか？ 終了：０　続行：1 発注状況：２　在庫状況：３");
 			System.out.print("入力>");
 			switch(scan.nextInt()){
-			case 0:gameLoopFlg=false;System.out.println("お疲れ様でした。");break;
-			case 1:mainTurn(scan,store,center,oderer,disposaler);break;
-			case 2:center.showOderList();break;
-			case 3:store.showCabinet();break;
+			case 0:
+				gameLoopFlg=false;
+				System.out.println("お疲れ様でした。");break;
+			case 1:
+				advanceTheDay(cal);
+				mainTurn(scan,store,center,oderer,disposaler,cashier);break;
+			case 2:
+				center.showOderList();break;
+			case 3:
+				store.showCabinet();break;
 			
 			}
 	
@@ -53,13 +60,13 @@ public class Main {
 	}
 	//----------------------------------------------------------
 	}
-	private static void mainTurn(Scanner scan,Store store,Center center,Oderer oderer,Disposaler disposaler){
+	private static void mainTurn(Scanner scan,Store store,Center center,Oderer oderer,Disposaler disposaler,Cashier cashier){
 		System.out.println("今日は何個発注しますか？");
 		System.out.print("入力>");
 
 		oderer.oderItem(currentDay, center,new Item(),scan.nextInt());
 		center.deliveryGoods(store,currentDay);
-		commingCustomer(store);//お客様が来て買い物をするシーン
+		commingCustomer(store,cashier);//お客様が来て買い物をするシーン
 		disposaler.disposal(store, currentDay);
 		store.showSalesData();
 			
@@ -70,13 +77,14 @@ public class Main {
 		currentDay = cal.getTime();
 		System.out.printf("%tm月%td日になりました。%n", currentDay,currentDay);
 	}
-	public static void commingCustomer(Store store){
+	public static void commingCustomer(Store store,Cashier cashier){
 		Random random = new Random();
-		final int customerNumber = random.nextInt(10)+5;
+		final int customerNumber = random.nextInt(3)+1;
 		System.out.println(customerNumber+"人来ました");
 		for(int i=0;i<customerNumber;i++){
 			Customer customer = new Customer(4);
-			customer.buyItem(store, new Item());
+			customer.selectItem(store, new Item()); //お客様が商品を選んで
+			cashier.getTheBill(customer,store);			//レジへ来た様子。
 		} // テスト用モック。このアイテムはランダムで生成するように変える。
 	}
 	
