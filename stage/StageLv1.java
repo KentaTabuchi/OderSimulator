@@ -33,8 +33,14 @@ public class StageLv1 extends GameStage{
 		
 		cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),cal.get(Calendar.DATE), 0, 0, 0);/*月日だけとって時、分、秒を０に合わせる。そうしないと日付比較した時に論理エラーになる。*/
 		currentDay = cal.getTime();
-		System.out.printf("%tm月%td日になりました。%n", currentDay,currentDay);
+		System.out.printf("%tm月%td日スタート。%n", currentDay,currentDay);
+
 		gameLoop(cal,store, center, oderer, disposaler, cashier);
+		
+	}
+	@Override
+	public void setMaxCustomer() {
+		this.maxCustomer = 1;
 	}
 
 }
