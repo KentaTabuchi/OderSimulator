@@ -25,14 +25,16 @@ public class Oderer {
 	 * @param item 
 	 * @param number　何個発注するか
 	 */
-	public void oderItem(Date currentday,Center center,Item item,int number){
+	public void oderItem(Date currentday,Center center,ItemType type,int number){
 		int counter = 0;
+		Item item = null;
 		for(int i=0;i<number;i++){
+			item = new Item();
 			item.setDeliveryDay(currentday);
 			center.receveOder(item);
 			counter++;
 		}
-		System.out.println(this.name+"「"+counter+"個発注しました。」");
+		System.out.println(this.name+"「"+item.getName()+"を"+counter+"個発注しました。」");
 	}
 
 }

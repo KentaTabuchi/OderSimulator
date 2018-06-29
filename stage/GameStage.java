@@ -13,6 +13,7 @@ import main.Center;
 import main.Customer;
 import main.Disposaler;
 import main.Item;
+import main.ItemType;
 import main.Oderer;
 import main.Store;
 
@@ -69,7 +70,7 @@ public abstract class GameStage {
 			System.out.println("二日目の発注をお願いします。");
 		}
 		System.out.print("入力>");
-		oderer.oderItem(currentDay, center,new Item(),scan.nextInt());
+		oderer.oderItem(currentDay, center,ItemType.BAKERY,scan.nextInt());
 		center.deliveryGoods(store,currentDay);
 		
 	}
@@ -77,7 +78,7 @@ public abstract class GameStage {
 		System.out.println("今日は何個発注しますか？");
 		System.out.print("入力>");
 
-		oderer.oderItem(currentDay, center,new Item(),scan.nextInt());
+		oderer.oderItem(currentDay, center,ItemType.BAKERY,scan.nextInt());
 		center.deliveryGoods(store,currentDay);
 		commingCustomer(store,cashier);//お客様が来て買い物をするシーン
 		disposaler.disposal(store, currentDay);

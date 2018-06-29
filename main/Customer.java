@@ -22,6 +22,9 @@ public class Customer {
 		this.name = "お客様";
 		this.maxPurchaseNumber = maxPurchaseNumber;
 	}
+	public String getName(){
+		return this.name;
+	}
 	public void selectItem(Store store,Item item){
 			Random rand = new Random();
 			int purchaseNumber = rand.nextInt(maxPurchaseNumber);

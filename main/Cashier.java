@@ -26,7 +26,7 @@ public class Cashier {
 	public void getTheBill(Customer customer,Store store){
 		int countNumber = 0;
 		int countPrice = 0;
-		
+		System.out.println(customer.getName()+"「これください。」");
 		Iterator<Item> it = customer.getBasket().iterator();
 		while(it.hasNext()){
 			final Item item = it.next();
