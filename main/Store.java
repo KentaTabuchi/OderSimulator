@@ -33,7 +33,7 @@ public class Store {
 	 * @param item
 	 */
 	public void addItemToCabinet(Item item) {
-		displayCabinet.add(item);
+		displayCabinet.add(item.clone());
 	}
 	public int removeItemFromCabinet(Date currentDay){
 		int counter=0;

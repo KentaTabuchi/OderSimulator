@@ -25,7 +25,7 @@ public class Customer {
 	public String getName(){
 		return this.name;
 	}
-	public void selectItem(Store store,Item item){
+	public void selectItem(Store store){
 			Random rand = new Random();
 			int purchaseNumber = rand.nextInt(maxPurchaseNumber);
 			int countStock = store.getDisplayCabinet().size();
@@ -36,7 +36,8 @@ public class Customer {
 				purchaseNumber = countStock;
 			}
 			for (int i=0;i<countStock;i++){
-				basket.add(item);
+				basket.add(store.getDisplayCabinet().get(i));//これだと種類を選べない
+				//store.getDisplayCabinet().remove(i);
 			}
 	}
 	public List<Item> getBasket(){

@@ -98,7 +98,7 @@ public abstract class GameStage {
 		System.out.println(customerNumber+"人来ました");
 		for(int i=0;i<customerNumber;i++){
 			Customer customer = new Customer(4);
-			customer.selectItem(store, new Item()); //お客様が商品を選んで
+			customer.selectItem(store); //お客様が商品を選んで
 			cashier.getTheBill(customer,store);			//レジへ来た様子。
 		} // テスト用モック。このアイテムはランダムで生成するように変える。
 	}

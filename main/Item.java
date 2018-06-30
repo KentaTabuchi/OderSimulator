@@ -9,6 +9,7 @@ import java.util.Date;
 /**
  * @author misskabu
  * 納品された商品を表すクラス
+ * このクラスの生成はItemFactoryクラスのcreateItemメソッドにて行う
  */
 public class Item implements Cloneable{
 	

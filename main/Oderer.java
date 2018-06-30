@@ -19,7 +19,7 @@ public class Oderer {
 		this.name = name;
 		System.out.println(this.name+"が発注します");
 	}
-	/**
+	/**発注するシーン。ここでItemが生成される。
 	 * @param currentday
 	 * @param center
 	 * @param item 
