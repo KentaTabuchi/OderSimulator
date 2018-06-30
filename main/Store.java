@@ -1,5 +1,6 @@
 package main;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -49,6 +50,26 @@ public class Store {
 		}
 		return counter;
 	}
+	public int discountItemFromCabinet(Date currentDay){
+		int counter=0;
+		Iterator<Item> it = displayCabinet.iterator();
+		Calendar cal = Calendar.getInstance();
+
+		while(it.hasNext()){
+			final Item item = it.next();
+			cal.setTime(item.getSellBuy());
+			cal.add(Calendar.DATE, -1);
+			final Date discountDate = cal.getTime();
+			if(discountDate.equals(currentDay)){
+				this.salesData.addDisposal(item);
+				counter++;
+				final int discountValue = 20; //これはItemFactoryクラスで設定するようにかえる。
+				item.discount(discountValue);
+				this.salesData.addDiscountPrice(discountValue);
+			}
+		}
+		return counter;
+	}
 	
 	public List<Item> getDisplayCabinet(){
 		return displayCabinet;
@@ -62,13 +83,19 @@ public class Store {
 			Item item = displayCabinet.get(i);
 			System.out.printf("賞味期限は%tF%n",item.getSellBuy());
 		}
+		System.out.println("-----------------------------------------------");
+
 	}
 	public void showSalesData(){
+		
 		System.out.println("----------------販売実績-----------------------");
 		System.out.print("販売数合計:"+salesData.getSalesNumber()+"個 ");
 		System.out.print("売上高累計:"+salesData.getSalesPrice()+"円 ");
 		System.out.print("廃棄数合計:"+salesData.getDisposalNumber()+"個 ");
 		System.out.print("廃棄金額累計:"+salesData.getDisposalPrice()+"円 ");
+		System.out.print("値引き金額累計:"+salesData.getDiscountPrice()+"円 ");
+		System.out.print("売変高累計:"+salesData.getImpairment()+"円 ");
+		System.out.print("売変率:"+salesData.getImpairmentRatio()+"%");
 		System.out.print("機会ロス:"+salesData.getChanceLoss()+"個 ");
 		System.out.println("在庫数:"+displayCabinet.size()+"個 ");
 		

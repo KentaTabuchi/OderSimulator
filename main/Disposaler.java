@@ -34,5 +34,15 @@ public class Disposaler {
 			System.out.println(this.name+"「"+counter+"個廃棄しました。」");
 		}
 	}
+	public void discount(Store store,Date currentDay){
+		System.out.printf("値引き見て来ます。」%n", name,currentDay,currentDay);
+		final int counter = store.discountItemFromCabinet(currentDay);
+		if(counter==0){
+			System.out.println(this.name+"「値引きはありませんでした」");
+			}
+		else{
+			System.out.println(this.name+"「"+counter+"個値引きしました。」");
+		}
+	}
 
 }

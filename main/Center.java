@@ -50,9 +50,10 @@ public class Center {
 
 		for(int i=0;i<oderList.size();i++){
 			Item item = oderList.get(i);
-			System.out.println("納品日"+item.getDeliveryDay());
+			System.out.printf("納品日は%tm月%td日%n",item.getDeliveryDay(),item.getDeliveryDay());
 		}
+		System.out.println("--------------------------------------------");
+
 	}
-	
 
 }

@@ -27,6 +27,9 @@ public class Item implements Cloneable{
 	public int getPrice() {
 		return price;
 	}
+	public int discount(int value){
+		return this.price -= value;
+	}
 	public void setPrice(int price) {
 		this.price = price;
 	}

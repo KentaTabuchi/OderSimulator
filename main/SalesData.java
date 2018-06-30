@@ -13,8 +13,11 @@ public class SalesData {
 	private int salesNumber = 0;
 	private int salesPrice = 0;
 	private int disposalNumber = 0;
+	private int discountPrice = 0;
 	private int disposalPrice = 0;
 	private int chanceLoss = 0; //チャンスロス
+	private int impairment =0;//売変合計（廃棄＋値引き)
+	private double impairmentRatio =0; //売変率
 	private SalesData() {
 	}
 	public static SalesData CreateInstance(){
@@ -49,5 +52,21 @@ public class SalesData {
 	public void addChanceLoss(int chanceLoss) {
 		this.chanceLoss += chanceLoss;
 	}
+	public int getDiscountPrice() {
+		return discountPrice;
+	}
+	public void addDiscountPrice(int value) {
+		this.discountPrice += value;
+	}
+	public int getImpairment() {
+		impairment = this.discountPrice + this.disposalPrice;
+		return impairment;
+	}
+	public double getImpairmentRatio() {
+		impairmentRatio = (double)this.getImpairment() / (double)this.salesPrice ;
+		return impairmentRatio;
+	}
+
+
 
 }

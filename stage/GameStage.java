@@ -5,6 +5,7 @@ package stage;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -12,7 +13,6 @@ import main.Cashier;
 import main.Center;
 import main.Customer;
 import main.Disposaler;
-import main.Item;
 import main.ItemType;
 import main.Oderer;
 import main.Store;
@@ -30,6 +30,7 @@ public abstract class GameStage {
 	public abstract void setMaxCustomer();
 
 	public abstract void start();
+	public abstract void description();
 	protected void gameLoop(Calendar cal,Store store,Center center,Oderer oderer,Disposaler disposaler,Cashier cashier){
 		gameLoopFlg=true;
 		try(Scanner scan = new Scanner(System.in)){
@@ -38,33 +39,35 @@ public abstract class GameStage {
 					openingPrepareation(scan,store, oderer, center);
 					this.advanceTheDay(cal);
 				}else{
-				System.out.println("どうしますか？ 終了：０　続行：1 発注状況：２　在庫状況：３");
-				System.out.print("入力>");
-				switch(scan.nextInt()){
-				case 0:
-					gameLoopFlg=false;
-					System.out.println("お疲れ様でした。");break;
-				case 1:
-					mainTurn(scan,store,center,oderer,disposaler,cashier);
-					advanceTheDay(cal);
-					break;
-				case 2:
-					center.showOderList();break;
-				case 3:
-					store.showCabinet();break;
+					System.out.println("どうしますか？ 終了：０　続行：1 発注状況：２　在庫状況：３");
+					System.out.print("入力>");
+					switch(scan.nextInt()){
+					case 0:
+						gameLoopFlg=false;
+						System.out.println("お疲れ様でした。");break;
+					case 1:
+						mainTurn(scan,store,center,oderer,disposaler,cashier);
+						advanceTheDay(cal);
+						break;
+					case 2:
+						center.showOderList();break;
+					case 3:
+						store.showCabinet();break;
+
+					}
 
 				}
-
 			}
+		}catch(InputMismatchException e){
+			System.out.println("半角で数字を入力してください。");
 		}
-			}
 	}
 	/**
 	 * 開店準備。初めの２日は発注、納品だけ
 	 */
 	protected void openingPrepareation(Scanner scan,Store store,Oderer oderer,Center center){
 		if(elapsedDays == 0){
-		System.out.println("初回発注お願いします");
+			System.out.println("初回発注お願いします");
 		}
 		else if(elapsedDays == 1){
 			System.out.println("二日目の発注をお願いします。");
@@ -72,7 +75,7 @@ public abstract class GameStage {
 		System.out.print("入力>");
 		oderer.oderItem(currentDay, center,ItemType.BAKERY,scan.nextInt());
 		center.deliveryGoods(store,currentDay);
-		
+
 	}
 	private void mainTurn(Scanner scan,Store store,Center center,Oderer oderer,Disposaler disposaler,Cashier cashier){
 		System.out.println("今日は何個発注しますか？");
@@ -81,9 +84,10 @@ public abstract class GameStage {
 		oderer.oderItem(currentDay, center,ItemType.BAKERY,scan.nextInt());
 		center.deliveryGoods(store,currentDay);
 		commingCustomer(store,cashier);//お客様が来て買い物をするシーン
+		disposaler.discount(store, currentDay);
 		disposaler.disposal(store, currentDay);
 		store.showSalesData();
-			
+
 	}
 	protected void advanceTheDay(Calendar cal){
 		cal.setTime(currentDay);;
@@ -97,10 +101,11 @@ public abstract class GameStage {
 		final int customerNumber = random.nextInt(this.maxCustomer)+1;
 		System.out.println(customerNumber+"人来ました");
 		for(int i=0;i<customerNumber;i++){
+			System.out.println("デバッグ1");
 			Customer customer = new Customer(4);
 			customer.selectItem(store); //お客様が商品を選んで
 			cashier.getTheBill(customer,store);			//レジへ来た様子。
-		} // テスト用モック。このアイテムはランダムで生成するように変える。
+		} 
 	}
-	
+
 }

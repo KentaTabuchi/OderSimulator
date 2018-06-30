@@ -42,5 +42,12 @@ public class StageLv1 extends GameStage{
 	public void setMaxCustomer() {
 		this.maxCustomer = 1;
 	}
+	@Override
+	public void description() {
+		// TODO 自動生成されたメソッド・スタブ
+		System.out.println("----------------------------------------------------------------------------------");
+		System.out.printf("レベル１。このステージではお客様は一人しか来ません。%nこの人はパンしか買わず最大で４個しか買いません。%n");
+		System.out.println("----------------------------------------------------------------------------------");
+	}
 
 }

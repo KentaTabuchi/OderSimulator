@@ -20,6 +20,7 @@ public class Main {
 	public static void main(String[] args) {
 		GameStage gameStage = new StageLv1();
 		gameStage.setMaxCustomer();
+		gameStage.description();
 		gameStage.start();
 	}
 }

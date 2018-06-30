@@ -24,6 +24,7 @@ public class Cashier {
 	/**会計する様子 
 	 */
 	public void getTheBill(Customer customer,Store store){
+		
 		int countNumber = 0;
 		int countPrice = 0;
 		if(customer.getShortage() != 0){

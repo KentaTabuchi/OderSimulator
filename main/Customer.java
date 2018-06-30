@@ -16,7 +16,7 @@ import java.util.Random;
  */
 public class Customer {
 	private String name;
-	private int shortage;
+	private int shortage;//買いたいものの不足数
 	private int maxPurchaseNumber;//一人が買う最大の購入数
 	private List<Item> basket = new ArrayList<Item>(); //買い物かごを現すリスト
 
@@ -33,15 +33,22 @@ public class Customer {
 			int counter = 0;
 			Iterator<Item> it = store.getDisplayCabinet().iterator();
 			while(it.hasNext()){
+				final ItemType type = ItemType.BAKERY;//これはランダムで選ぶようにする。
+				final Item item = it.next();
 				if(0 < purchaseNumber){
-					this.basket.add(it.next().clone());
-					it.remove();
+
+					if(item.getName()==type.getName()){
+						this.basket.add(item.clone());
+						it.remove();
+						purchaseNumber--;
+					}
 					counter++;
 				}
 			}
 			shortage = purchaseNumber-counter;
 			if(0 < shortage){
-			System.out.printf("%s「あと%d欲しかったな」%n",this.name,shortage);}
+			System.out.printf("%s「あと%d欲しかったな」%n",this.name,shortage);
+			store.salesData.addChanceLoss(shortage);}
 	}
 	public List<Item> getBasket(){
 		return this.basket;
