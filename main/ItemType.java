@@ -9,10 +9,10 @@ package main;
  */
 public enum ItemType {
 	BAKERY("パン"),RICE("米飯");
-	private String name;
+	private final String name;
 	
 	
-	private ItemType(String name){
+	private ItemType(final String name){
 		this.name = name;
 	}
 	public String getName(){

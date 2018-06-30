@@ -26,10 +26,11 @@ public class Oderer {
 	 * @param number　何個発注するか
 	 */
 	public void oderItem(Date currentday,Center center,ItemType type,int number){
+		ItemFactory factory = new ItemFactory();
 		int counter = 0;
 		Item item = null;
 		for(int i=0;i<number;i++){
-			item = new Item();
+			item = factory.createItem(type);
 			item.setDeliveryDay(currentday);
 			center.receveOder(item);
 			counter++;

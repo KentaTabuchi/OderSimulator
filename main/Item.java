@@ -11,6 +11,7 @@ import java.util.Date;
  * 納品された商品を表すクラス
  */
 public class Item implements Cloneable{
+	
 	private static int id = 0;//このアイテムを生成した順にインクリメントするデバッグ用の識別No。
 	private String name;//品名
 	private Date sellBuy; //賞味期限
@@ -38,10 +39,18 @@ public class Item implements Cloneable{
 		this.leadTime = 2;
 		this.price = 100;
 	}
+	/**
+	 * @param name 品名
+	 * @param stockAcceptable 入荷許容
+	 * @param leadTime リードタイム
+	 * @param price 売価
+	 */
 	public Item(String name,int stockAcceptable,int leadTime,int price) {
 		Item.id++;
+		this.name = name;
 		this.stockAcceptable = stockAcceptable;
 		this.leadTime = leadTime;
+		this.price = price;
 	}
 		public Date getSellBuy() {
 			Calendar cal = Calendar.getInstance();
@@ -83,8 +92,9 @@ public class Item implements Cloneable{
 			Item item = null;
 			try{
 				item = (Item)super.clone();
-				item.sellBuy = (Date) this.sellBuy.clone();
-				item.deliveryDay = (Date)this.deliveryDay.clone();
+				item.name = this.name;
+				item.sellBuy = this.sellBuy;
+				item.deliveryDay = this.deliveryDay;
 				
 			}catch(CloneNotSupportedException e){
 				e.printStackTrace();
