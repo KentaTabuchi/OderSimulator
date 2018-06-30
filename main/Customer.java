@@ -1,5 +1,6 @@
 package main;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -15,6 +16,7 @@ import java.util.Random;
  */
 public class Customer {
 	private String name;
+	private int shortage;
 	private int maxPurchaseNumber;//一人が買う最大の購入数
 	private List<Item> basket = new ArrayList<Item>(); //買い物かごを現すリスト
 
@@ -28,20 +30,24 @@ public class Customer {
 	public void selectItem(Store store){
 			Random rand = new Random();
 			int purchaseNumber = rand.nextInt(maxPurchaseNumber);
-			int countStock = store.getDisplayCabinet().size();
-			if(purchaseNumber > countStock){
-				final int chanceLoss = purchaseNumber - countStock;
-				store.salesData.addChanceLoss(chanceLoss);
-				System.out.println(this.name + "「後" + chanceLoss + "個欲しかった。");
-				purchaseNumber = countStock;
+			int counter = 0;
+			Iterator<Item> it = store.getDisplayCabinet().iterator();
+			while(it.hasNext()){
+				if(0 < purchaseNumber){
+					this.basket.add(it.next().clone());
+					it.remove();
+					counter++;
+				}
 			}
-			for (int i=0;i<countStock;i++){
-				basket.add(store.getDisplayCabinet().get(i));//これだと種類を選べない
-				//store.getDisplayCabinet().remove(i);
-			}
+			shortage = purchaseNumber-counter;
+			if(0 < shortage){
+			System.out.printf("%s「あと%d欲しかったな」%n",this.name,shortage);}
 	}
 	public List<Item> getBasket(){
 		return this.basket;
+	}
+	public int getShortage(){
+		return shortage;
 	}
 
 }

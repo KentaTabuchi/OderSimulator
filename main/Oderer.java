@@ -35,7 +35,11 @@ public class Oderer {
 			center.receveOder(item);
 			counter++;
 		}
-		System.out.println(this.name+"「"+item.getName()+"を"+counter+"個発注しました。」");
+		if(number != 0){
+			System.out.println(this.name+"「"+item.getName()+"を"+counter+"個発注しました。」");
+		}else{
+			System.out.println(this.name+"「"+"今日は発注しませんでした");
+		}
 	}
 
 }
