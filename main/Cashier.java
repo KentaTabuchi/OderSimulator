@@ -29,6 +29,8 @@ public class Cashier {
 		int countPrice = 0;
 		if(customer.getShortage() != 0){
 		System.out.println(customer.getName()+"「これください。」");
+		}else{
+			System.out.println(customer.getName()+"「全然ないやん。帰るわ。」");
 		}
 		Iterator<Item> it = customer.getBasket().iterator();
 		while(it.hasNext()){
@@ -38,6 +40,7 @@ public class Cashier {
 			countPrice += item.getPrice();
 		}
 		if(countNumber==0){
+			System.out.println(customer.getName() + "「もうないの？』" );
 			System.out.println(this.name + "「申し訳ありません。ただいま品切れしております。」");
 		}
 		else{

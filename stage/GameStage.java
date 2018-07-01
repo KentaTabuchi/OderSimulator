@@ -3,6 +3,9 @@
  */
 package stage;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -27,11 +30,16 @@ public abstract class GameStage {
 	protected int elapsedDays=0;//経過日数
 	protected boolean gameLoopFlg =false;
 	protected int maxCustomer;
+	BufferedReader reader;
 	public abstract void setMaxCustomer();
 
 	public abstract void start();
 	public abstract void description();
+	public GameStage(){
+		reader = new BufferedReader(new InputStreamReader(System.in));
+	}
 	protected void gameLoop(Calendar cal,Store store,Center center,Oderer oderer,Disposaler disposaler,Cashier cashier){
+		
 		gameLoopFlg=true;
 		try(Scanner scan = new Scanner(System.in)){
 			while(gameLoopFlg){
@@ -60,6 +68,9 @@ public abstract class GameStage {
 			}
 		}catch(InputMismatchException e){
 			System.out.println("半角で数字を入力してください。");
+		} catch (IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
 		}
 	}
 	/**
@@ -77,14 +88,18 @@ public abstract class GameStage {
 		center.deliveryGoods(store,currentDay);
 
 	}
-	private void mainTurn(Scanner scan,Store store,Center center,Oderer oderer,Disposaler disposaler,Cashier cashier){
+	private void mainTurn(Scanner scan,Store store,Center center,Oderer oderer,Disposaler disposaler,Cashier cashier) throws IOException{
 		System.out.println("今日は何個発注しますか？");
 		System.out.print("入力>");
 
 		oderer.oderItem(currentDay, center,ItemType.BAKERY,scan.nextInt());
+		System.out.print("▽");reader.read();
 		center.deliveryGoods(store,currentDay);
+		System.out.print("▽");reader.read();
 		commingCustomer(store,cashier);//お客様が来て買い物をするシーン
+		System.out.print("▽");reader.read();
 		disposaler.discount(store, currentDay);
+		System.out.print("▽");reader.read();
 		disposaler.disposal(store, currentDay);
 		store.showSalesData();
 
@@ -101,7 +116,6 @@ public abstract class GameStage {
 		final int customerNumber = random.nextInt(this.maxCustomer)+1;
 		System.out.println(customerNumber+"人来ました");
 		for(int i=0;i<customerNumber;i++){
-			System.out.println("デバッグ1");
 			Customer customer = new Customer(4);
 			customer.selectItem(store); //お客様が商品を選んで
 			cashier.getTheBill(customer,store);			//レジへ来た様子。

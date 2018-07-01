@@ -81,7 +81,7 @@ public class Store {
 
 		for(int i=0;i<displayCabinet.size();i++){
 			Item item = displayCabinet.get(i);
-			System.out.printf("賞味期限は%tF%n",item.getSellBuy());
+			System.out.printf("賞味期限が%tFの%s%n",item.getSellBuy(),item.getName());
 		}
 		System.out.println("-----------------------------------------------");
 
