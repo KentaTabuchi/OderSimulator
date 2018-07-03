@@ -8,14 +8,16 @@ package main;
  *
  */
 public enum ItemType {
-	BAKERY("パン"),RICE("米飯");
+	BAKERY("パン"),
+	RICE("おにぎり");
+	
 	private final String name;
-	
-	
 	private ItemType(final String name){
 		this.name = name;
 	}
 	public String getName(){
 		return name;
 	}
+	
+
 }

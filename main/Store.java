@@ -98,6 +98,7 @@ public class Store {
 		System.out.print("売変率:"+salesData.getImpairmentRatio()+"%");
 		System.out.print("機会ロス:"+salesData.getChanceLoss()+"個 ");
 		System.out.println("在庫数:"+displayCabinet.size()+"個 ");
+		System.out.println("--------------------------------------------");
 		
 	}
 	

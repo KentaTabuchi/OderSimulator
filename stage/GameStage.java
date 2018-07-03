@@ -19,6 +19,7 @@ import main.Disposaler;
 import main.ItemType;
 import main.Oderer;
 import main.Store;
+import save.Save;
 
 
 /**
@@ -47,7 +48,7 @@ public abstract class GameStage {
 					openingPrepareation(scan,store, oderer, center);
 					this.advanceTheDay(cal);
 				}else{
-					System.out.println("どうしますか？ 終了：０　続行：1 発注状況：２　在庫状況：３");
+					System.out.println("どうしますか？ 終了：０　続行：1 発注状況：２　在庫状況：３ セーブ:9");
 					System.out.print("入力>");
 					switch(scan.nextInt()){
 					case 0:
@@ -61,6 +62,8 @@ public abstract class GameStage {
 						center.showOderList();break;
 					case 3:
 						store.showCabinet();break;
+					case 9:
+						Save.saveToFile();
 
 					}
 

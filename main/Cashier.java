@@ -24,27 +24,28 @@ public class Cashier {
 	/**会計する様子 
 	 */
 	public void getTheBill(Customer customer,Store store){
-		
+
 		int countNumber = 0;
 		int countPrice = 0;
-		if(customer.getShortage() != 0){
-		System.out.println(customer.getName()+"「これください。」");
+		if(customer.getShortage() == 0){
+			customer.angry();
 		}else{
-			System.out.println(customer.getName()+"「全然ないやん。帰るわ。」");
-		}
-		Iterator<Item> it = customer.getBasket().iterator();
-		while(it.hasNext()){
-			final Item item = it.next();
-			store.salesData.addSales(item);
-			countNumber++;
-			countPrice += item.getPrice();
-		}
-		if(countNumber==0){
-			System.out.println(customer.getName() + "「もうないの？』" );
-			System.out.println(this.name + "「申し訳ありません。ただいま品切れしております。」");
-		}
-		else{
-			System.out.printf("%s「%d点で%d円になります。」%n",this.name,countNumber,countPrice);
+			customer.greet();
+			Iterator<Item> it = customer.getBasket().iterator();
+			while(it.hasNext()){
+				final Item item = it.next();
+				store.salesData.addSales(item);
+				countNumber++;
+				countPrice += item.getPrice();
+				System.out.println(this.name+"「"+item.getName()+"が１点");
+			}
+			if(countNumber==0){
+				customer.askNoMore();
+				System.out.println(this.name + "「申し訳ありません。ただいま品切れしております。」");
+			}
+			else{
+				System.out.printf("%s「合計%d点で%d円になります。」%n",this.name,countNumber,countPrice);
+			}
 		}
 	}
 

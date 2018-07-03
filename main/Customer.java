@@ -27,18 +27,24 @@ public class Customer {
 	public String getName(){
 		return this.name;
 	}
+	/**お客様が商品をカゴに入れていくところ
+	 * @param store
+	 */
 	public void selectItem(Store store){
 			Random rand = new Random();
 			int purchaseNumber = rand.nextInt(maxPurchaseNumber);
 			int counter = 0;
 			Iterator<Item> it = store.getDisplayCabinet().iterator();
+			Random randomType = new Random();
 			while(it.hasNext()){
-				final ItemType type = ItemType.BAKERY;//これはランダムで選ぶようにする。
+				final int typeIndex = randomType.nextInt(2);
+				ItemType type = ItemType.values()[typeIndex];
+				System.out.println(type.getName()+"が欲しいなあ。");
 				final Item item = it.next();
 				if(0 < purchaseNumber){
 
 					if(item.getName()==type.getName()){
-						this.basket.add(item.clone());
+						this.basket.add(item);
 						it.remove();
 						purchaseNumber--;
 					}
@@ -49,6 +55,21 @@ public class Customer {
 			if(0 < shortage){
 			System.out.printf("%s「あと%d欲しかったな」%n",this.name,shortage);
 			store.salesData.addChanceLoss(shortage);}
+	}
+	public void greet(){
+		System.out.println(this.getName()+"これください。");
+	}
+	/**
+	 * 商品がないと怒って帰る。
+	 */
+	public void angry(){
+		System.out.println(this.getName()+"「全然ないやん。帰るわ。」");
+	}
+	/**
+	 *商品が欲しい数に足りないともっとないか聞く
+	 */
+	public void askNoMore(){
+		System.out.println(this.getName() + "「もうないの？』" );
 	}
 	public List<Item> getBasket(){
 		return this.basket;
