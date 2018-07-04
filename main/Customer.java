@@ -32,17 +32,20 @@ public class Customer {
 	 */
 	public void selectItem(Store store){
 			Random rand = new Random();
+			/*TODO:ここをItemTypeの数だけ同じことを書くか配列にする**/
 			int purchaseNumber = rand.nextInt(maxPurchaseNumber);
+			/*----------------------------------------------**/
 			int counter = 0;
 			Iterator<Item> it = store.getDisplayCabinet().iterator();
 			Random randomType = new Random();
 			while(it.hasNext()){
-				final int typeIndex = randomType.nextInt(2);
+				final int typeIndex = randomType.nextInt(ItemType.values().length);
 				ItemType type = ItemType.values()[typeIndex];
-				System.out.println(type.getName()+"が欲しいなあ。");
+				System.out.println(this.getName()+"「"+type.getName()+"が欲しいなあ。」");
+				
 				final Item item = it.next();
+				/*ここがItemTypeで分岐できるようにしないと挙動が変**/
 				if(0 < purchaseNumber){
-
 					if(item.getName()==type.getName()){
 						this.basket.add(item);
 						it.remove();
@@ -50,6 +53,7 @@ public class Customer {
 					}
 					counter++;
 				}
+				/*----------------------------------------------**/
 			}
 			shortage = purchaseNumber-counter;
 			if(0 < shortage){
