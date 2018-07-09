@@ -1,7 +1,7 @@
 package main;
 
+import gui.CUIInputter;
 import stage.GameStage;
-import stage.StageLv1;
 
 /**
  * @author misskabu
@@ -18,9 +18,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		GameStage gameStage = new StageLv1();
-		gameStage.setMaxCustomer();
-		gameStage.description();
+		GameStage gameStage = new GameStage(new CUIInputter());
 		gameStage.start();
 	}
 }

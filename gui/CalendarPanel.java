@@ -6,6 +6,7 @@ import java.awt.LayoutManager;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class CalendarPanel extends JPanel {
 
 	public CalendarPanel() {

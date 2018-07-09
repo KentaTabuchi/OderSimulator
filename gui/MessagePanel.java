@@ -4,10 +4,6 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.LayoutManager;
-import java.awt.ScrollPane;
-
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -17,6 +13,7 @@ import javax.swing.JTextArea;
  * @author misskabu
  *
  */
+@SuppressWarnings("serial")
 public class MessagePanel extends JPanel {
 
 	/**
@@ -28,7 +25,7 @@ public class MessagePanel extends JPanel {
 		this.setBackground(Color.CYAN);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 		textArea = new JTextArea();
-		textArea.setEditable(false);
+		//textArea.setEditable(false);
 		final JScrollPane scrollPane = new JScrollPane(textArea);
 		this.add(scrollPane);
 	}
