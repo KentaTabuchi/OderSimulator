@@ -16,7 +16,7 @@ public class SwingInputter implements Inputable,Runnable {
 	@Override
 	public  int getInput() {
 		isLoop = true;
-		MainFrame.getMenuPanel().setVisible(true);
+		MainFrame.getSelectPanel().setVisible(true);
 		this.thread = new Thread(this);
 		thread.start();
 		try {
@@ -24,7 +24,7 @@ public class SwingInputter implements Inputable,Runnable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		MainFrame.getMenuPanel().setVisible(false);
+		MainFrame.getSelectPanel().setVisible(false);
 
 		return key;
 	}
