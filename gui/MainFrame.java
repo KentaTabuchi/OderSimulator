@@ -11,6 +11,7 @@ import stage.GameStage;
 public class MainFrame extends JFrame{
 	private static SwingInputter inputter = new SwingInputter();
 	private static SelectNumberPanel selectNumberPanel = new SelectNumberPanel(new FlowLayout());
+	private static MenuPanel menuPanel = new MenuPanel(new FlowLayout());
 	private static OKButtonPanel okPanel = new OKButtonPanel();
 	private final MessagePanel messagePanel = new MessagePanel();
 	
@@ -23,6 +24,7 @@ public class MainFrame extends JFrame{
 		this.getContentPane().add(messagePanel);
 		this.getContentPane().add(selectNumberPanel);
 		this.getContentPane().add(okPanel);
+		this.getContentPane().add(menuPanel);
 		JTextAreaStream stream = new JTextAreaStream(messagePanel.textArea);
 		System.setOut(new PrintStream(stream, true));  
 		this.setVisible(true);
@@ -42,6 +44,9 @@ public class MainFrame extends JFrame{
 	}
 	public static OKButtonPanel getOkPanel() {
 		return okPanel;
+	}
+	public static MenuPanel getMenuPanel() {
+		return menuPanel;
 	}
 
 }

@@ -3,9 +3,7 @@
  */
 package stage;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -65,7 +63,7 @@ public class GameStage {
 				}else{
 					System.out.println("どうしますか？ 終了：０　続行：1 発注状況：２　在庫状況：３ セーブ:9");
 					System.out.print("入力>");
-					final int key = this.inputter.getInput();
+					final int key = this.inputter.getMenuKey();
 					switch(key){
 					case 0:
 						gameLoopFlg=false;
@@ -97,12 +95,11 @@ public class GameStage {
 		int key = -1;
 		if(elapsedDays == 0){
 			System.out.println("初回発注お願いします");
-			//key = inputter.getInput();
-			key = 5;
+			key = inputter.getInputNumber();
 		}
 		else if(elapsedDays == 1){
 			System.out.println("二日目の発注をお願いします。");
-			key = inputter.getInput();
+			key = inputter.getInputNumber();
 		}
 		
 		System.out.print("入力>");
@@ -114,7 +111,7 @@ public class GameStage {
 	private void mainTurn(Store store,Center center,Oderer oderer,Disposaler disposaler,Cashier cashier) throws IOException{
 		System.out.println("今日は何個発注しますか？");
 		System.out.print("入力>");
-		final int key = inputter.getInput();
+		final int key = inputter.getInputNumber();
 		oderer.oderItem(currentDay, center,ItemType.BAKERY,key);
 		System.out.print("▽");
 		inputter.enter();

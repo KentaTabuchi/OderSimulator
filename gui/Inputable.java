@@ -9,6 +9,7 @@ package gui;
  *
  */
 public interface Inputable {
-	public int getInput();	//数値入力を取得
+	public int getInputNumber();	//0から10の数値入力を取得
+	public int getMenuKey(); //固定されたメニュー番号を取得
 	public void enter();	//値を取得せず、ただメッセージを進めるためのメソッド。
 }

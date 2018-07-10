@@ -14,7 +14,7 @@ public class SwingInputter implements Inputable,Runnable {
 	}
 
 	@Override
-	public  int getInput() {
+	public  int getInputNumber() {
 		isLoop = true;
 		MainFrame.getSelectPanel().setVisible(true);
 		this.thread = new Thread(this);
@@ -58,6 +58,25 @@ public class SwingInputter implements Inputable,Runnable {
 		}
 		
 		
+	}
+
+	/* (非 Javadoc)
+	 * @see gui.Inputable#getMenuKey()
+	 */
+	@Override
+	public int getMenuKey() {
+		isLoop = true;
+		MainFrame.getMenuPanel().setVisible(true);
+		this.thread = new Thread(this);
+		thread.start();
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		MainFrame.getMenuPanel().setVisible(false);
+
+		return key;
 	}
 
 

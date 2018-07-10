@@ -20,7 +20,6 @@ public class OKButtonPanel extends JPanel implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("OKが押されました。");
 		MainFrame.getInputter().setKey(-1);
 		
 	}

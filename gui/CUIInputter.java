@@ -16,7 +16,7 @@ public class CUIInputter implements Inputable {
 
 	@SuppressWarnings("resource")
 	@Override
-	public int getInput() {
+	public int getInputNumber() {
 		Scanner scan = new Scanner(System.in);
 		final int key = scan.nextInt();
 		return key;
@@ -31,6 +31,15 @@ public class CUIInputter implements Inputable {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public int getMenuKey() {
+		//メニューに関係ない番号が入力されたらやり直しを求める処理がいる。
+		@SuppressWarnings("resource")
+		Scanner scan = new Scanner(System.in);
+		final int key = scan.nextInt();
+		return key;
 	}
 
 }
