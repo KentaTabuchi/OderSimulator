@@ -1,6 +1,8 @@
 package main;
 import java.util.Date;
 
+import gui.MainFrame;
+
 /**
  * 
  */
@@ -33,6 +35,7 @@ public class Disposaler {
 		else{
 			System.out.println(this.name+"「"+counter+"個廃棄しました。」");
 		}
+		MainFrame.getStorePanel().repaintTable(store.getDisplayCabinet());
 	}
 	public void discount(Store store,Date currentDay){
 		System.out.printf(this.name + "「値引き見て来ます。」%n", name,currentDay,currentDay);

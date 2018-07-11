@@ -16,7 +16,7 @@ public class SelectNumberPanel extends JPanel{
 
 	public SelectNumberPanel(LayoutManager layout) {
 		super(layout);
-		this.setBounds(100, 400, 600, 80);
+		this.setBounds(PanelPosManager.SELECT_NUMBER_PANEL);
 		for(int i=0; i< 11; i++){
 			final String caption = String.valueOf(i);
 			final int key = i;

@@ -16,7 +16,8 @@ public class MenuPanel extends JPanel implements ActionListener {
 //"どうしますか？ 終了：０　続行：1 発注状況：２　在庫状況：３ セーブ:9"
 	public MenuPanel(LayoutManager layout) {
 		super(layout);
-		this.setBounds(100, 400, 600, 50);
+		this.setBounds(PanelPosManager.MENU_PANEL);
+		
 		JButton button0 = new JButton("終了");
 		JButton button1 = new JButton("続行");
 		JButton button2 = new JButton("発注状況");

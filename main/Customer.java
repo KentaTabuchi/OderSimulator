@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import gui.MainFrame;
+
 /**
  * 
  */
@@ -59,6 +61,7 @@ public class Customer {
 			if(0 < shortage){
 			System.out.printf("%s「あと%d欲しかったな」%n",this.name,shortage);
 			store.salesData.addChanceLoss(shortage);}
+			MainFrame.getStorePanel().repaintTable(store.getDisplayCabinet());
 	}
 	public void greet(){
 		System.out.println(this.getName()+"これください。");

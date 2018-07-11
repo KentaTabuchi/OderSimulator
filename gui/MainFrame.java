@@ -13,7 +13,9 @@ public class MainFrame extends JFrame{
 	private static SelectNumberPanel selectNumberPanel = new SelectNumberPanel(new FlowLayout());
 	private static MenuPanel menuPanel = new MenuPanel(new FlowLayout());
 	private static OKButtonPanel okPanel = new OKButtonPanel();
+	private static StorePanel storePanel = new StorePanel();
 	private final MessagePanel messagePanel = new MessagePanel();
+	
 	
 	public MainFrame() {
 		this.setTitle("発注練習");
@@ -25,6 +27,7 @@ public class MainFrame extends JFrame{
 		this.getContentPane().add(selectNumberPanel);
 		this.getContentPane().add(okPanel);
 		this.getContentPane().add(menuPanel);
+		this.getContentPane().add(storePanel);
 		JTextAreaStream stream = new JTextAreaStream(messagePanel.textArea);
 		System.setOut(new PrintStream(stream, true));  
 		this.setVisible(true);
@@ -47,6 +50,12 @@ public class MainFrame extends JFrame{
 	}
 	public static MenuPanel getMenuPanel() {
 		return menuPanel;
+	}
+	public MessagePanel getMessagePanel() {
+		return messagePanel;
+	}
+	public static StorePanel getStorePanel() {
+		return storePanel;
 	}
 
 }

@@ -21,7 +21,8 @@ public class MessagePanel extends JPanel {
 	 */
 	public final JTextArea textArea;
 	public MessagePanel() {
-		this.setBounds(100, 220, 600, 150);
+		this.setBounds(PanelPosManager.MESSAGE_PANEL);
+		
 		this.setBackground(Color.CYAN);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 		textArea = new JTextArea();

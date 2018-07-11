@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import gui.MainFrame;
+
 /**
  * 
  */
@@ -34,7 +36,8 @@ public class Store {
 	 * @param item
 	 */
 	public void addItemToCabinet(Item item) {
-		displayCabinet.add(item.clone());
+		displayCabinet.add(item);
+		MainFrame.getStorePanel().repaintTable(displayCabinet);
 	}
 	public int removeItemFromCabinet(Date currentDay){
 		int counter=0;
