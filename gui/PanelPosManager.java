@@ -21,7 +21,7 @@ public class PanelPosManager {
 	public static final Rectangle OK_BUTTON_PANEL = new Rectangle(100, 400, 600, 50);
 	public static final Rectangle SELECT_NUMBER_PANEL = new Rectangle(100, 400, 600, 80);
 	public static final Rectangle STORE_PANEL = new Rectangle(30, 30, 150, 200);
-	
+	public static final Rectangle CENTER_PANEL = new Rectangle(210,30,150,200);
 	
 	public PanelPosManager() {
 		// TODO 自動生成されたコンストラクター・スタブ

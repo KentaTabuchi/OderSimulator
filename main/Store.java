@@ -51,6 +51,7 @@ public class Store {
 				it.remove();
 			}
 		}
+		MainFrame.getStorePanel().repaintTable(displayCabinet);
 		return counter;
 	}
 	public int discountItemFromCabinet(Date currentDay){

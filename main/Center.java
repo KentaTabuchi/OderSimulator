@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import gui.MainFrame;
+
 /**
  * 
  */
@@ -24,6 +26,8 @@ public class Center {
 	
 	public void receveOder(Item item){
 		this.oderList.add(item);
+		MainFrame.getCenterPanel().repaintTable(oderList);
+		
 	}
 	/**納品日がきたら発注リストから対象商品を陳列リストへ写した後、対象品目は発注リストから除外。
 	 * @param store
@@ -43,7 +47,9 @@ public class Center {
 		}
 		if(counter!=0){
 		System.out.println("センター「"+counter+"個発送しました。」");
+		MainFrame.getCenterPanel().repaintTable(oderList);
 		}
+		
 	}
 	public void showOderList(){
 		System.out.println("----------------発注状況-----------------------");

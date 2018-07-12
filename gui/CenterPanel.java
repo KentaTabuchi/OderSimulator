@@ -21,14 +21,14 @@ import main.Item;
  *
  */
 @SuppressWarnings("serial")
-public class StorePanel extends JPanel{
+public class CenterPanel extends JPanel{
 	JTable table;
 	DefaultTableModel model;
 	/**
 	 * 
 	 */
-	public StorePanel() {
-		this.setBounds(PanelPosManager.STORE_PANEL);
+	public CenterPanel() {
+		this.setBounds(PanelPosManager.CENTER_PANEL);
 		this.setBackground(Color.CYAN);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 		model = new DefaultTableModel();

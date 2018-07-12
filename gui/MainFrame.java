@@ -14,6 +14,7 @@ public class MainFrame extends JFrame{
 	private static MenuPanel menuPanel = new MenuPanel(new FlowLayout());
 	private static OKButtonPanel okPanel = new OKButtonPanel();
 	private static StorePanel storePanel = new StorePanel();
+	private static CenterPanel centerPanel = new CenterPanel();
 	private final MessagePanel messagePanel = new MessagePanel();
 	
 	
@@ -28,6 +29,7 @@ public class MainFrame extends JFrame{
 		this.getContentPane().add(okPanel);
 		this.getContentPane().add(menuPanel);
 		this.getContentPane().add(storePanel);
+		this.getContentPane().add(centerPanel);
 		JTextAreaStream stream = new JTextAreaStream(messagePanel.textArea);
 		System.setOut(new PrintStream(stream, true));  
 		this.setVisible(true);
@@ -56,6 +58,9 @@ public class MainFrame extends JFrame{
 	}
 	public static StorePanel getStorePanel() {
 		return storePanel;
+	}
+	public static CenterPanel getCenterPanel() {
+		return centerPanel;
 	}
 
 }
