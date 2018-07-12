@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import gui.Inputable;
+import gui.MainFrame;
 import main.Cashier;
 import main.Center;
 import main.Customer;
@@ -40,6 +41,7 @@ public class GameStage {
 		this.description();
 		cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),cal.get(Calendar.DATE), 0, 0, 0);/*月日だけとって時、分、秒を０に合わせる。そうしないと日付比較した時に論理エラーになる。*/
 		currentDay = cal.getTime();
+		MainFrame.getCalendarPanel().printDate(currentDay);
 		System.out.printf("%tm月%td日スタート。%n", currentDay,currentDay);
 		this.maxCustomer = 1;
 		gameLoop(cal,store, center, oderer, disposaler, cashier);
@@ -132,6 +134,7 @@ public class GameStage {
 		cal.setTime(currentDay);;
 		cal.add(Calendar.DATE, 1);
 		currentDay = cal.getTime();
+		MainFrame.getCalendarPanel().printDate(currentDay);
 		elapsedDays++;
 		System.out.printf("%d日後。%tm月%td日になりました。%n", elapsedDays,currentDay,currentDay);
 	}

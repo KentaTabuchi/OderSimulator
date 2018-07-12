@@ -15,6 +15,7 @@ public class MainFrame extends JFrame{
 	private static OKButtonPanel okPanel = new OKButtonPanel();
 	private static StorePanel storePanel = new StorePanel();
 	private static CenterPanel centerPanel = new CenterPanel();
+	private static CalendarPanel calendarPanel = new CalendarPanel(new BorderLayout());
 	private final MessagePanel messagePanel = new MessagePanel();
 	
 	
@@ -23,7 +24,7 @@ public class MainFrame extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(800, 600);
 		this.getContentPane().setLayout(null);//引数null でアンカーレイアウトみたいになる。
-		this.getContentPane().add(new CalendarPanel(new BorderLayout()));
+		this.getContentPane().add(calendarPanel);
 		this.getContentPane().add(messagePanel);
 		this.getContentPane().add(selectNumberPanel);
 		this.getContentPane().add(okPanel);
@@ -31,7 +32,7 @@ public class MainFrame extends JFrame{
 		this.getContentPane().add(storePanel);
 		this.getContentPane().add(centerPanel);
 		JTextAreaStream stream = new JTextAreaStream(messagePanel.textArea);
-		System.setOut(new PrintStream(stream, true));  
+		System.setOut(new PrintStream(stream, true));  //Swingでsystemout.printlnを使うためのコード。ネットのコピペなので詳しくわからない。
 		this.setVisible(true);
 	}
 	@SuppressWarnings("unused")
@@ -61,6 +62,9 @@ public class MainFrame extends JFrame{
 	}
 	public static CenterPanel getCenterPanel() {
 		return centerPanel;
+	}
+	public static CalendarPanel getCalendarPanel() {
+		return calendarPanel;
 	}
 
 }

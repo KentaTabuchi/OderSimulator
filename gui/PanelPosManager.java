@@ -14,6 +14,7 @@ public class PanelPosManager {
 	/**
 	 * 
 	 */
+	public static final Rectangle CALENDAR_PANEL = new Rectangle(700, 0, 100, 30);
 	public static final Rectangle MENU_PANEL = new Rectangle(100,400,600,50);
 	public static final Rectangle MESSAGE_PANEL = new Rectangle(100, 250, 600, 150);
 	public static final Rectangle CARENDAE_PANEL = new Rectangle(700, 0, 100, 30);
