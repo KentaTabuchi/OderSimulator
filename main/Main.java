@@ -11,7 +11,6 @@ import stage.GameStage;
 public class Main {
 
 	public Main() {
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
 	/**

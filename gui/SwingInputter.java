@@ -10,7 +10,6 @@ public class SwingInputter implements Inputable,Runnable {
 	Thread thread;
 	public SwingInputter() {
 		
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
 	@Override

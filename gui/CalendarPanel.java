@@ -14,7 +14,6 @@ public class CalendarPanel extends JPanel {
 	private final JLabel dateLabel = new JLabel("日付");
 	
 	public CalendarPanel() {
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
 	public CalendarPanel(LayoutManager layout) {
@@ -23,7 +22,6 @@ public class CalendarPanel extends JPanel {
 		this.setBounds(PanelPosManager.CALENDAR_PANEL);
 		
 		this.add(this.dateLabel);
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 	public void printDate(Date date){
 		SimpleDateFormat dateFormat = new SimpleDateFormat();

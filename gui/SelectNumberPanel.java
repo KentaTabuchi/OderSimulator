@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 public class SelectNumberPanel extends JPanel{
 
 	public SelectNumberPanel() {
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
 	public SelectNumberPanel(LayoutManager layout) {

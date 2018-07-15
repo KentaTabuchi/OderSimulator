@@ -6,7 +6,6 @@ import java.io.IOException;
 public class Save {
 
 	public Save() {
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 	public static void saveToFile(){
 		FileWriter fw = null;

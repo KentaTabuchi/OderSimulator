@@ -27,9 +27,7 @@ public class Cashier {
 
 		int countNumber = 0;
 		int countPrice = 0;
-		if(customer.getShortage() == 0){
-			customer.angry();
-		}else{
+
 			customer.greet();
 			Iterator<Item> it = customer.getBasket().iterator();
 			while(it.hasNext()){
@@ -46,7 +44,7 @@ public class Cashier {
 			else{
 				System.out.printf("%s「合計%d点で%d円になります。」%n",this.name,countNumber,countPrice);
 			}
-		}
+		
 	}
 
 }

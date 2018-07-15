@@ -74,7 +74,6 @@ public class GameStage {
 						try {
 							mainTurn(store,center,oderer,disposaler,cashier);
 						} catch (IOException e) {
-							// TODO 自動生成された catch ブロック
 							e.printStackTrace();
 						}
 						advanceTheDay(cal);

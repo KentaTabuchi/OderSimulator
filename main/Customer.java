@@ -33,9 +33,11 @@ public class Customer {
 	 * @param store
 	 */
 	public void selectItem(Store store){
-			Random rand = new Random();
-			/*TODO:ここをItemTypeの数だけ同じことを書くか配列にする**/
-			int purchaseNumber = rand.nextInt(maxPurchaseNumber);
+			int[] purchaseNumber = new int[ItemType.values().length]; 
+			for(int i=0;i<ItemType.values().length;i++){
+				Random rand = new Random();
+				purchaseNumber[i] = rand.nextInt(maxPurchaseNumber);
+			
 			/*----------------------------------------------**/
 			int counter = 0;
 			Iterator<Item> it = store.getDisplayCabinet().iterator();
@@ -46,22 +48,23 @@ public class Customer {
 				System.out.println(this.getName()+"「"+type.getName()+"が欲しいなあ。」");
 				
 				final Item item = it.next();
-				/*ここがItemTypeで分岐できるようにしないと挙動が変**/
-				if(0 < purchaseNumber){
+				if(0 < purchaseNumber[typeIndex]){
 					if(item.getName()==type.getName()){
 						this.basket.add(item);
 						it.remove();
-						purchaseNumber--;
+						purchaseNumber[typeIndex]--;
 					}
 					counter++;
 				}
+				}
 				/*----------------------------------------------**/
 			}
-			shortage = purchaseNumber-counter;
-			if(0 < shortage){
-			System.out.printf("%s「あと%d欲しかったな」%n",this.name,shortage);
-			store.salesData.addChanceLoss(shortage);}
-			MainFrame.getStorePanel().repaintTable(store.getDisplayCabinet());
+			//TODO: ここから下もアイテム種で分岐する
+			//shortage = purchaseNumber-counter;
+			//if(0 < shortage){
+			//System.out.printf("%s「あと%d欲しかったな」%n",this.name,shortage);
+			//store.salesData.addChanceLoss(shortage);}
+			//MainFrame.getStorePanel().repaintTable(store.getDisplayCabinet());
 	}
 	public void greet(){
 		System.out.println(this.getName()+"これください。");

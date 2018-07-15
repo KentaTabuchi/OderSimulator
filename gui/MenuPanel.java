@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 public class MenuPanel extends JPanel implements ActionListener {
 
 	public MenuPanel() {
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 //"どうしますか？ 終了：０　続行：1 発注状況：２　在庫状況：３ セーブ:9"
 	public MenuPanel(LayoutManager layout) {

@@ -25,7 +25,6 @@ public class PanelPosManager {
 	public static final Rectangle CENTER_PANEL = new Rectangle(210,30,150,200);
 	
 	public PanelPosManager() {
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
 }
